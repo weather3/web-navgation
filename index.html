@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Click to Unlimited Possibilities</title>
+    <meta
+      name="description"
+      content="一个带有海报拼贴气质的多标签导航站，从随机推荐开始探索无限可能。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">EDITORIAL WEB ATLAS / 多标签导航</p>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 aria-label="a click to unlimited possibilities">
+              <span class="headline-top">A CLICK TO</span>
+              <span class="headline-bottom">Unlimited Possibilities</span>
+            </h1>
+          </div>
+          <aside class="hero-panel">
+            <div class="stat-block">
+              <span class="stat-num" id="total-sites">0</span>
+              <span class="stat-label">收录站点</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-num" id="total-groups">0</span>
+              <span class="stat-label">标签数量</span>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="recommend-panel">
+          <div class="recommend-badge" id="recommend-badge">今日推荐</div>
+          <div class="recommend-copy">
+            <h2 id="random-title">正在抽取网站...</h2>
+            <p id="random-description" class="recommend-description"></p>
+            <div id="random-tags" class="chip-list"></div>
+            <p id="random-url" class="site-url"></p>
+          </div>
+          <div class="recommend-actions">
+            <a id="random-link" class="recommend-link" href="#" target="_blank" rel="noreferrer">打开这个网站</a>
+            <button id="refresh-random" class="ghost-button" type="button">随机一下</button>
+          </div>
+        </section>
+
+        <section class="control-panel">
+          <label class="search-box">
+            <span>检索</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="搜标题、简介、域名，例如 音乐 / 学习 / cloud"
+            />
+          </label>
+
+          <div class="filter-wrap">
+            <div class="filter-head">
+              <h2>分类标签</h2>
+              <button id="clear-filter" class="ghost-button" type="button">清空筛选</button>
+            </div>
+            <div class="chip-list" id="tag-filters"></div>
+          </div>
+        </section>
+
+        <section class="section-index">
+          <div class="index-head">
+            <div class="index-copy">
+              <span class="section-label">当前展墙</span>
+              <h2 id="wall-title">未选择标签</h2>
+            </div>
+            <p id="result-summary">先选择一个或多个标签，再开始浏览网站。</p>
+          </div>
+        </section>
+
+        <section id="gallery" class="gallery"></section>
+      </main>
+    </div>
+
+    <script src="./sites-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
