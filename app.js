@@ -67,7 +67,7 @@ function buildTagFilters() {
 function setRandomSite(site) {
   if (!site) return;
   randomTitle.textContent = site.title;
-  randomDescription.textContent = site.description || "这是一个等待你点开的有趣网站。";
+  randomDescription.textContent = site.description || "这是一个等你点开的有趣网站。";
   randomUrl.textContent = new URL(site.url).hostname;
   randomLink.href = site.url;
   randomTags.innerHTML = site.tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
@@ -101,7 +101,7 @@ function render() {
   if (!selectedTags.size) {
     wallTitle.textContent = "未选择标签";
     resultSummary.textContent = "先选择一个或多个标签，再开始浏览网站。";
-    gallery.innerHTML = `<section class="category-section"><p class="empty-state">还没有选择标签，因此这里不会默认展示全部网站。先点一个感兴趣的标签吧。</p></section>`;
+    gallery.innerHTML = `<section class="category-section"><p class="empty-state">还没有选择标签，因此这里不会展示网站。先点一个感兴趣的标签吧。</p></section>`;
     return;
   }
 

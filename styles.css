@@ -27,16 +27,23 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, var(--signal-soft), transparent 28%),
+    radial-gradient(circle at 100% 20%, var(--secondary-soft), transparent 25%),
+    linear-gradient(180deg, #f8f1e5 0%, #efe6d7 100%);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   color: var(--ink);
   background:
     radial-gradient(circle at top left, var(--signal-soft), transparent 28%),
     radial-gradient(circle at 100% 20%, var(--secondary-soft), transparent 25%),
     linear-gradient(180deg, #f8f1e5 0%, #efe6d7 100%);
   font-family: "Georgia", "Noto Serif SC", serif;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -44,7 +51,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.12;
   background-image:
     linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px);
@@ -56,9 +63,9 @@ a {
 }
 
 .page-shell {
-  width: min(1420px, calc(100% - 32px));
+  width: min(1560px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 28px 0 64px;
+  padding: 28px 0 72px;
 }
 
 .hero,
@@ -68,8 +75,10 @@ a {
 .category-section {
   backdrop-filter: blur(10px);
   background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 18px 44px rgba(17, 17, 17, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 .hero {
@@ -90,17 +99,6 @@ a {
   border-radius: 38% 62% 55% 45%;
   transform: rotate(-16deg);
   opacity: 0.85;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  left: 28px;
-  bottom: 22px;
-  width: 180px;
-  height: 3px;
-  background: linear-gradient(90deg, #8ac8a4, transparent);
-  box-shadow: 0 0 18px rgba(138, 200, 164, 0.28);
 }
 
 .eyebrow {
@@ -274,29 +272,44 @@ a {
 
 .recommend-actions {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   justify-items: stretch;
   position: relative;
   z-index: 1;
+  min-width: 184px;
 }
 
 .recommend-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 12px 18px;
+  min-height: 54px;
+  padding: 14px 22px;
   border-radius: 999px;
   background: var(--ink);
   color: var(--accent-contrast);
   text-decoration: none;
   border: 1px solid var(--ink);
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   transition:
     background var(--transition),
     color var(--transition),
     border-color var(--transition),
     transform var(--transition),
     box-shadow var(--transition);
+}
+
+.recommend-actions .ghost-button {
+  min-height: 48px;
+  padding: 12px 20px;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 #random-tags,
@@ -344,6 +357,12 @@ a {
   box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
+.filter-wrap {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
 .filter-head,
 .index-head,
 .section-top {
@@ -362,7 +381,7 @@ a {
 
 .index-copy {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .ghost-button,
@@ -374,6 +393,10 @@ a {
 }
 
 .ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
   padding: 10px 14px;
   border-radius: 999px;
   cursor: pointer;
@@ -460,14 +483,37 @@ a {
 
 .section-label {
   display: inline-flex;
-  padding: 6px 12px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 32px;
+  padding: 0 14px;
   border-radius: 999px;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   font-family: "Trebuchet MS", sans-serif;
+}
+
+.section-index .index-head {
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.section-index .index-copy h2 {
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  line-height: 1;
+}
+
+.section-index #result-summary {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  text-align: right;
 }
 
 .section-count {
@@ -595,6 +641,113 @@ a {
   }
 }
 
+@media (min-width: 1800px) {
+  body::before {
+    opacity: 0.08;
+  }
+
+  .page-shell {
+    width: min(1720px, calc(100% - 72px));
+    padding-top: 40px;
+    padding-bottom: 88px;
+  }
+
+  .content {
+    gap: 28px;
+  }
+
+  .hero,
+  .recommend-panel,
+  .control-panel,
+  .section-index,
+  .category-section {
+    border-radius: 28px;
+    padding: 28px;
+  }
+
+  .hero-grid,
+  .recommend-panel,
+  .control-panel {
+    gap: 32px;
+  }
+
+  .headline-top {
+    font-size: clamp(1.08rem, 1.1vw, 1.4rem);
+  }
+
+  .headline-bottom {
+    font-size: clamp(4.8rem, 5.6vw, 7.6rem);
+  }
+
+  .stat-num {
+    font-size: clamp(2.4rem, 3vw, 4rem);
+  }
+
+  .search-box input {
+    min-height: 56px;
+    font-size: 1.02rem;
+  }
+
+  .ghost-button,
+  .chip,
+  .jump-link {
+    min-height: 42px;
+  }
+
+  .recommend-actions {
+    min-width: 208px;
+  }
+
+  .recommend-link {
+    min-height: 58px;
+    font-size: 1rem;
+  }
+
+  .recommend-actions .ghost-button {
+    min-height: 50px;
+    font-size: 0.94rem;
+  }
+
+  .section-index .index-copy h2 {
+    font-size: clamp(1.75rem, 1.6vw, 2.2rem);
+  }
+
+  .section-index #result-summary {
+    font-size: 1.02rem;
+  }
+
+  .site-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (min-width: 2560px) {
+  body::before {
+    opacity: 0.06;
+  }
+
+  .page-shell {
+    width: min(1880px, calc(100% - 120px));
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.85fr minmax(320px, 0.9fr);
+  }
+
+  .headline-bottom {
+    font-size: clamp(5.6rem, 5vw, 8.6rem);
+  }
+
+  .recommend-copy h2 {
+    font-size: clamp(2.5rem, 3vw, 4.2rem);
+  }
+
+  .site-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 20px, 1420px);
@@ -620,6 +773,19 @@ a {
   .section-top {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .section-index .index-head {
+    gap: 14px;
+  }
+
+  .section-index #result-summary {
+    max-width: none;
+    text-align: left;
+  }
+
+  .filter-wrap {
+    gap: 12px;
   }
 
   .site-grid {
