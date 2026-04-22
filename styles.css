@@ -787,12 +787,32 @@ a {
   }
 
   .section-index .index-head {
-    gap: 14px;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .section-index .index-copy {
+    width: 100%;
+    gap: 10px;
+    justify-items: start;
+  }
+
+  .section-index .section-label {
+    align-self: flex-start;
+    margin: 0;
+  }
+
+  .section-index .index-copy h2 {
+    width: 100%;
+    margin: 0;
+    text-align: left;
   }
 
   .section-index #result-summary {
+    width: 100%;
     max-width: none;
     text-align: left;
+    margin: 0;
   }
 
   .filter-wrap {
